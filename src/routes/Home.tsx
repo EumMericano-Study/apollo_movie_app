@@ -28,17 +28,19 @@ export default () => {
                 <Title>Movie App with React and Apollo</Title>
                 <Subtitle>and GraphQL</Subtitle>
             </Header>
-            <Movies>
-                {data &&
-                    data.movies &&
-                    data.movies.map(
+            {loading && <Loading>Loading...</Loading>}
+            {error && <div>Error...</div>}
+            {!loading && data && data.movies && (
+                <Movies>
+                    {data.movies.map(
                         (movie: { id: number; medium_cover_image: string }) => (
                             <div key={movie.id}>
                                 <img src={movie.medium_cover_image} />
                             </div>
                         )
                     )}
-            </Movies>
+                </Movies>
+            )}
         </Container>
     );
 };
