@@ -2,6 +2,8 @@ import React from "react";
 import { gql } from "apollo-boost";
 import { useQuery } from "@apollo/react-hooks";
 
+import Movie from "../components/Movie";
+
 import {
     Container,
     Loading,
@@ -10,6 +12,7 @@ import {
     Subtitle,
     Movies,
 } from "./Home.style";
+import { idText } from "typescript";
 
 const GET_MOVIES = gql`
     {
@@ -33,11 +36,16 @@ export default () => {
             {!loading && data && data.movies && (
                 <Movies>
                     {data.movies.map(
-                        (movie: { id: number; medium_cover_image: string }) => (
-                            <div key={movie.id}>
-                                <img src={movie.medium_cover_image} />
-                            </div>
-                        )
+                        (movie: { id: number; medium_cover_image: string }) => {
+                            const { id, medium_cover_image } = movie;
+                            return (
+                                <Movie
+                                    key={id}
+                                    id={id}
+                                    _src={medium_cover_image}
+                                />
+                            );
+                        }
                     )}
                 </Movies>
             )}
