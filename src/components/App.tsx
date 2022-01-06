@@ -3,12 +3,14 @@ import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "../routes/Home";
 import Detail from "../routes/Detail";
 
+import { PATH } from "../constants";
+
 function App() {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/:id" element={<Detail />} />
+                <Route path={PATH.HOME} element={<Home />} />
+                <Route path={`${PATH.HOME}/:id`} element={<Detail />} />
             </Routes>
         </Router>
     );
