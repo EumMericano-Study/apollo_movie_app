@@ -33,13 +33,10 @@ export default function Main() {
             {loading && <Loading>Loading...</Loading>}
             {error && <div>Error...</div>}
             <Movies>
-                {!loading &&
-                    data?.movies?.map((movie: Movie) => {
-                        const { id, medium_cover_image } = movie;
-                        return (
-                            <Movie key={id} id={id} _src={medium_cover_image} />
-                        );
-                    })}
+                {data?.movies?.map((movie: Movie) => {
+                    const { id, medium_cover_image } = movie;
+                    return <Movie key={id} id={id} _src={medium_cover_image} />;
+                })}
             </Movies>
         </Container>
     );

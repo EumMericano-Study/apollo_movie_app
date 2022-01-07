@@ -46,7 +46,7 @@ export default function Detail() {
             <Container>
                 {loading && <Loading>Loading...</Loading>}
                 {error && <Loading>Error</Loading>}
-                {!loading && data?.movie && (
+                {data?.movie && (
                     <>
                         <Column>
                             <Title>{data.movie.title}</Title>
