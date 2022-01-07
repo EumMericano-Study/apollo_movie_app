@@ -32,16 +32,15 @@ export default function Main() {
             </Header>
             {loading && <Loading>Loading...</Loading>}
             {error && <div>Error...</div>}
-            {!loading && data && data.movies && (
-                <Movies>
-                    {data.movies.map((movie: Movie) => {
+            <Movies>
+                {!loading &&
+                    data?.movies?.map((movie: Movie) => {
                         const { id, medium_cover_image } = movie;
                         return (
                             <Movie key={id} id={id} _src={medium_cover_image} />
                         );
                     })}
-                </Movies>
-            )}
+            </Movies>
         </Container>
     );
 }

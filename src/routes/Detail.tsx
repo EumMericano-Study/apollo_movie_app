@@ -46,7 +46,7 @@ export default function Detail() {
             <Container>
                 {loading && <Loading>Loading...</Loading>}
                 {error && <Loading>Error</Loading>}
-                {!loading && data.movie && (
+                {!loading && data?.movie && (
                     <>
                         <Column>
                             <Title>{data.movie.title}</Title>
@@ -61,16 +61,12 @@ export default function Detail() {
                     </>
                 )}
             </Container>
-            {!loading && data.suggestions && (
-                <Movies>
-                    {data.suggestions.map((movie: Movie) => {
-                        const { id, medium_cover_image } = movie;
-                        return (
-                            <Movie key={id} id={id} _src={medium_cover_image} />
-                        );
-                    })}
-                </Movies>
-            )}
+            <Movies>
+                {data?.suggestions?.map((movie: Movie) => {
+                    const { id, medium_cover_image } = movie;
+                    return <Movie key={id} id={id} _src={medium_cover_image} />;
+                })}
+            </Movies>
         </OuterContainer>
     );
 }
