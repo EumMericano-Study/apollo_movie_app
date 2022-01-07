@@ -1,8 +1,14 @@
 import styled from "styled-components";
 
+const OuterContainer = styled.div`
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-image: linear-gradient(-45deg, #d754ab, #fd723a);
+`;
+
 const Container = styled.div`
     height: 100vh;
-    background-image: linear-gradient(-45deg, #d754ab, #fd723a);
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -35,4 +41,12 @@ const Poster = styled.img`
     object-fit: cover;
 `;
 
-export { Container, Column, Title, Subtitle, Description, Poster };
+export {
+    OuterContainer,
+    Container,
+    Column,
+    Title,
+    Subtitle,
+    Description,
+    Poster,
+};
