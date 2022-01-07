@@ -22,7 +22,7 @@ const GET_MOVIES = gql`
     }
 `;
 
-export default () => {
+export default function Main() {
     const { loading, error, data } = useQuery(GET_MOVIES);
     return (
         <Container>
@@ -34,20 +34,14 @@ export default () => {
             {error && <div>Error...</div>}
             {!loading && data && data.movies && (
                 <Movies>
-                    {data.movies.map(
-                        (movie: { id: number; medium_cover_image: string }) => {
-                            const { id, medium_cover_image } = movie;
-                            return (
-                                <Movie
-                                    key={id}
-                                    id={id}
-                                    _src={medium_cover_image}
-                                />
-                            );
-                        }
-                    )}
+                    {data.movies.map((movie: Movie) => {
+                        const { id, medium_cover_image } = movie;
+                        return (
+                            <Movie key={id} id={id} _src={medium_cover_image} />
+                        );
+                    })}
                 </Movies>
             )}
         </Container>
     );
-};
+}

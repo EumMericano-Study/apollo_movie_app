@@ -24,7 +24,7 @@ const GET_MOVIE = gql`
     }
 `;
 
-export default () => {
+export default function Detail() {
     const { id } = useParams();
     const parsedId = Number(id || "");
 
@@ -52,4 +52,4 @@ export default () => {
             )}
         </Container>
     );
-};
+}
