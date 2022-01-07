@@ -12,7 +12,6 @@ import {
     Subtitle,
     Movies,
 } from "./Home.style";
-import { idText } from "typescript";
 
 const GET_MOVIES = gql`
     {
