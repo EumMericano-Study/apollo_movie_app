@@ -20,11 +20,13 @@ import { Loading } from "./Home.style";
 const GET_MOVIE = gql`
     query getMovie($id: Int!) {
         movie(id: $id) {
+            id
             title
             rating
             medium_cover_image
             description_intro
             language
+            isLiked @client
         }
         suggestions(id: $id) {
             id
@@ -49,7 +51,10 @@ export default function Detail() {
                 {data?.movie && (
                     <>
                         <Column>
-                            <Title>{data.movie.title}</Title>
+                            <Title>
+                                {data.movie.title}{" "}
+                                {data.movie.isLiked ? "❤" : "🤍"}
+                            </Title>
                             <Subtitle>
                                 💬{data.movie.language} ⭐{data.movie.rating}
                             </Subtitle>
